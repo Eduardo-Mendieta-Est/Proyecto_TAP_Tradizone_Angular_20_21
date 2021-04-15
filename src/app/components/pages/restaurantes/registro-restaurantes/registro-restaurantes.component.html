@@ -1,1 +1,58 @@
-<p>registro-restaurantes works!</p>
+<form style="width: 75%; margin: 20px auto;" [formGroup]="restauranteForm" (ngSubmit)="enviarFormulario()" >
+    <h1 style="text-align: center; font-size: 25px; font-weight: bold; margin: 20px;" >Formulario de Registro de Restaurantes</h1>
+
+    <div class="form-group row">
+        <label for="nombre" class="col-sm-2 col-form-label">Nombre del Restaurante:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="nombre" formControlName="nombre" >
+        </div>
+    </div>
+    <!-- -------------------- Validación para el nombre: -------------------- -->
+    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" >
+        <p *ngIf="nombre.errors.required" style="margin: 10px; color: rgb(41, 3, 3); "> El nombre es requerido! </p>
+    </div>
+
+    <div class="form-group row">
+      <label for="telefono" class="col-sm-2 col-form-label">Telefono:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="telefono"  formControlName="telefono" >
+      </div>
+    </div>
+     <!-- -------------------- Validación para el teléfono: -------------------- -->
+     <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" >
+        <p *ngIf="telefono.errors.required" style="margin: 10px; color: rgb(41, 3, 3); "> El teléfono es requerido! </p>    
+     </div>
+
+    <div class="form-group row">
+      <label for="slogan" class="col-sm-2 col-form-label">Slogan:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="slogan" formControlName="slogan" >
+      </div>
+    </div>
+    <!-- -------------------- Validación para el slogan: -------------------- -->
+    <div *ngIf="slogan.invalid && (slogan.dirty || slogan.touched)" >
+        <p *ngIf="slogan.errors.required" style="margin: 10px; color: rgb(41, 3, 3); "> El slogan es requerido! </p>    
+     </div>
+
+    <div class="form-group row">
+        <label for="logo" class="col-sm-2 col-form-label">Elige un imagen (logo):</label>
+        <div class="col-sm-10">
+          <input type="file" class="form-control" id="logo" accept="image/png, image/jpeg, image/gif" 
+            #imagenInputFile (change)="onFileChange($event)">
+        </div>
+    </div>
+    <div *ngIf="imagen" class="mb-2">
+        <h5 style="font-size: 12px;">Vista Previa:</h5>
+        <div>
+            <img class="image-thumbnail" style="max-width: 100px;" [src]="imagenMin">
+        </div>
+    </div>
+    <!-- -------------------- Validación para el logo: -------------------- -->
+    <div *ngIf="!imagen" >
+        <p> El logo es requerido! </p>    
+     </div>
+
+    <button type="submit" class="btn btn-primary">Listo</button>
+    <button class="btn btn-danger" (click)="resetearFormulario()">Cancelar</button>
+
+  </form>

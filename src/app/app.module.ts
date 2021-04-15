@@ -13,6 +13,10 @@ import { EventosComponent } from './components/pages/extras/eventos/eventos.comp
 import { LoginComponent } from './components/shared/login/login.component';
 import { HomeComponent } from './components/pages/extras/home/home.component';
 
+/** ----------------- Formularios Reactivos ----------------- */
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +32,8 @@ import { HomeComponent } from './components/pages/extras/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
