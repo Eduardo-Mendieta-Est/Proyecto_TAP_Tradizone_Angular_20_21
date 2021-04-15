@@ -11,6 +11,7 @@ import { CatalogoRestaurantesComponent } from './components/pages/restaurantes/c
 import { CatalogoPlatosComponent } from './components/pages/platos/catalogo-platos/catalogo-platos.component';
 import { EventosComponent } from './components/pages/extras/eventos/eventos.component';
 import { LoginComponent } from './components/shared/login/login.component';
+import { HomeComponent } from './components/pages/extras/home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './components/shared/login/login.component';
     CatalogoRestaurantesComponent,
     CatalogoPlatosComponent,
     EventosComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
