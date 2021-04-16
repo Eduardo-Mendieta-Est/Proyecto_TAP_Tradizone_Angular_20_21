@@ -16,6 +16,4 @@ export class UsuarioService {
     return this.http.post<Response<Usuario>>(this.URLUSUARIO,usuario); 
   }
 
-
-
 }
