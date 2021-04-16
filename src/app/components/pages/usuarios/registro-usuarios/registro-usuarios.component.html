@@ -1,1 +1,52 @@
-<p>registro-usuarios works!</p>
+<div class="container">
+    <header>
+        <h1 style="text-align: center;">Registro Usuarios</h1>
+    </header>
+    <div class="container px-4">
+        <form [formGroup]="usuarioregForm" (ngSubmit)="enviarFormulario()">
+            <div class="mb-3">
+                <label for="formularioUsuario" class="form-label"><b>Nombres:</b></label>
+                <input type="text" class="form-control" id="nombres" formControlName="nombres">
+            </div>
+            <div class="mb-3">
+                <label for="formularioUsuario" class="form-label"><b>Apellidos:</b></label>
+                <input type="text" class="form-control" id="apellidos" formControlName="apellidos">
+            </div>
+            <div class="mb-3">
+                <label for="formularioUsuario" class="form-label"><b>Correo (UserName):</b></label>
+                <input type="email" class="form-control" id="username" formControlName="username">
+            </div>
+            <div class="mb-3">
+                <label for="formularioUsuario" class="form-label"><b>Password:</b></label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="logo" class="col-sm-2 col-form-label"><b>Elige una imagen (perfil):</b></label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" id="logo" accept="image/png, image/jpeg, image/gif" 
+                            #imagenInputFile (change)="onFileChange($event)">
+                    </div>
+                </div>
+                <div *ngIf="imagen" class="mb-2" style="text-align: center;">
+                    <h5 style="font-size: 12px;">Vista Previa:</h5>
+                    <div>
+                        <img class="image-thumbnail" style="max-width: 100px;" [src]="imagenMin">
+                    </div>
+                </div>
+                    <!-- -------------------- Validación para el logo: -------------------- -->
+                <div *ngIf="!imagen" >
+                        <p> La imagen es requerida! </p>    
+                </div>      
+            </div>            
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-outline-primary">Listo</button>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-outline-danger" (click)="resetearFormulario()">Cancelar</button>
+            </div>            
+        </form>
+    </div>
+</div>
