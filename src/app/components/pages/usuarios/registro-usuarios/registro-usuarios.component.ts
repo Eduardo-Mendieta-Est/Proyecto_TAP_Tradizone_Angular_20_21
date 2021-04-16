@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Response } from 'src/app/util/Response';
 
 @Component({
   selector: 'app-registro-usuarios',
@@ -12,10 +15,12 @@ export class RegistroUsuariosComponent implements OnInit {
 
   usuarioregForm: FormGroup;
 
+  usuario= new Usuario;
+  datosUsuario: Response<Usuario>;
   /*imagen: File;
   imagenMin: File;*/
 
-  constructor() { 
+  constructor(private usuarioService: UsuarioService) {
     this.usuarioregForm = this.crearFormGroup();
   }
 
@@ -56,6 +61,21 @@ export class RegistroUsuariosComponent implements OnInit {
     };
     fr.readAsDataURL(this.imagen);
   }*/
+
+  guardarUsuario():void{
+    this.usuario.nombre = this.usuarioregForm.get("nombres") + " " + this.usuarioregForm.get("apellidos");
+    this.usuario.correo = this.usuarioregForm.get("username")+ "";
+    this.usuario.contrasena = this.usuarioregForm.get("password")+"";
+
+    this.usuarioService.createUsuario(this.usuario).subscribe(data=>{
+      this.datosUsuario=data;
+      console.log(data);
+    }, er =>{
+      alert("Tipo: "+er);
+    });
+
+  }
+
 
   get nombres(){return this.usuarioregForm.get('nombres')};
   get apellidos(){return this.usuarioregForm.get('apellidos')};
