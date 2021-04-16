@@ -12,8 +12,8 @@ export class RegistroUsuariosComponent implements OnInit {
 
   usuarioregForm: FormGroup;
 
-  imagen: File;
-  imagenMin: File;
+  /*imagen: File;
+  imagenMin: File;*/
 
   constructor() { 
     this.usuarioregForm = this.crearFormGroup();
@@ -27,16 +27,16 @@ export class RegistroUsuariosComponent implements OnInit {
       nombres: new FormControl('', Validators.required),
       apellidos: new FormControl('', Validators.required),
       username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      imagen: new FormControl('', Validators.required)
+      password: new FormControl('', Validators.required)
+      //imagen: new FormControl('', Validators.required)
     });
   }
 
   resetearFormulario(): void{
     this.usuarioregForm.reset();
-    this.imagen = null;
+    /*this.imagen = null;
     this.imagenMin = null;
-    this.imageFile.nativeElement.value = '';
+    this.imageFile.nativeElement.value = '';*/
   }
 
   enviarFormulario(): void{
@@ -48,18 +48,18 @@ export class RegistroUsuariosComponent implements OnInit {
     }
   }
   
-  onFileChange(event){
+  /*onFileChange(event){
     this.imagen = event.target.files[0];
     const fr = new FileReader();
     fr.onload = (evento: any) => {
       this.imagenMin = evento.target.result;
     };
     fr.readAsDataURL(this.imagen);
-  }
+  }*/
 
   get nombres(){return this.usuarioregForm.get('nombres')};
   get apellidos(){return this.usuarioregForm.get('apellidos')};
   get username(){return this.usuarioregForm.get('username')};
   get password(){return this.usuarioregForm.get('password')};
-  get imagenperfil(){return this.usuarioregForm.get('imagenperfil')};
+  //get imagenperfil(){return this.usuarioregForm.get('imagenperfil')};
 }
