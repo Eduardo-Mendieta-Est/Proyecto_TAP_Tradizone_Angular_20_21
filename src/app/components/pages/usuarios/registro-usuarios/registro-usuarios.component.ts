@@ -40,9 +40,9 @@ export class RegistroUsuariosComponent implements OnInit {
   
 
   guardarUsuario():void{
-    this.usuario.nombre = this.usuarioregForm.get("nombres") + " " + this.usuarioregForm.get("apellidos");
-    this.usuario.correo = this.usuarioregForm.get("username")+ "";
-    this.usuario.contrasena = this.usuarioregForm.get("password")+"";
+    this.usuario.nombre = this.usuarioregForm.get("nombres").value + " " + this.usuarioregForm.get("apellidos").value;
+    this.usuario.correo = this.usuarioregForm.get("username").value;
+    this.usuario.contrasena = this.usuarioregForm.get("password").value;
 
     this.usuarioService.createUsuario(this.usuario).subscribe(data=>{
       this.datosUsuario=data;
