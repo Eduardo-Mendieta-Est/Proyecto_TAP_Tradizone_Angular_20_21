@@ -1,0 +1,43 @@
+<div class="container">
+    <header>
+        <h1 style="text-align: center;">Formulario Sucursal</h1>
+    </header>
+    <body>
+        <div class="container px-4">
+            <form [formGroup]="sucursalForm">
+                <div class="mb-3">
+                    <label for="formularioSucursal" class="form-label"><b>Nombre:</b></label>
+                    <input type="text" class="form-control" id="nombre" formControlName="nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioSucursal" class="form-label"><b>Direccion:</b></label>
+                    <input type="text" class="form-control" id="direccion" formControlName="direccion">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioSucursal" class="form-label"><b>Telefono:</b></label>
+                    <input type="number" class="form-control" id="telefono" formControlName="telefono">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioSucursal" class="form-label"><b>Celular:</b></label>
+                    <input type="number" class="form-control" id="celular" formControlName="celular">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioSucursal" class="form-label"><b>Hora inicio:</b></label>
+                    <input type="time" class="form-control" id="horaInicio" formControlName="horaInicio">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioSucursal" class="form-label"><b>Hora fin:</b></label>
+                    <input type="time" class="form-control" id="horaFin" formControlName="horaFin">
+                </div>
+                <div class="mb-3">
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-primary" (click)="guardarSucursal()">Listo</button>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-danger" (click)="resetearFormulario()">Cancelar</button>
+                    </div>          
+                </div>
+            </form>
+        </div>
+    </body>
+</div>

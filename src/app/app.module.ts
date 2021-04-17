@@ -16,6 +16,7 @@ import { HomeComponent } from './components/pages/extras/home/home.component';
 /** ----------------- Formularios Reactivos ----------------- */
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormularioSucursalComponent } from './components/pages/restaurantes/formulario-sucursal/formulario-sucursal.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     CatalogoPlatosComponent,
     EventosComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    FormularioSucursalComponent
   ],
   imports: [
     BrowserModule,
