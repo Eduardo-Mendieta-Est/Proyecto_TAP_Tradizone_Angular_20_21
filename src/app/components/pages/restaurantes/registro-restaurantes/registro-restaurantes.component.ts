@@ -1,8 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Logo } from 'src/app/models/imagen/logo';
 import { Local } from 'src/app/models/local';
 import { Restaurante } from 'src/app/models/restaurante';
 import { RestauranteService } from 'src/app/services/restaurante.service';
+import { SucursalService } from 'src/app/services/sucursal.service';
+import { HttpStatus } from 'src/app/util/http_status';
 
 @Component({
   selector: 'app-registro-restaurantes',
@@ -19,8 +22,9 @@ export class RegistroRestaurantesComponent implements OnInit {
   imagenMin: File;
   restaurante: Restaurante;
   local: Local;
+  logo: Logo;
 
-  constructor(private restauranteService : RestauranteService) {
+  constructor(private restauranteService : RestauranteService, private sucursalService: SucursalService) {
     this.restauranteForm = this.crearFormGroup();
    }
 
@@ -63,9 +67,24 @@ export class RegistroRestaurantesComponent implements OnInit {
     this.local.horaFin = this.restauranteForm.get('horaFin').value;
 
     if(this.imagen != null){
-      this.restauranteService.crearRestaurante(this.restaurante, this.local, this.imagen, "").subscribe(
+      this.restauranteService.crearRestaurante(this.restaurante, "").subscribe(
         data => {
-          console.log(data);
+          this.restaurante = data.objectResponse;
+          if(data.codigoHttp == HttpStatus.CREATED){
+            this.sucursalService.crearSucursal(this.local, this.restaurante.id).subscribe(
+              data => {
+                this.local = data.objectResponse;
+                console.log(data.descripcion);
+              }
+            );
+
+            this.restauranteService.crearLogo(this.imagen, this.restaurante.id).subscribe(
+              data => {
+                this.logo = data.objectResponse;
+                console.log(data.descripcion);
+              }
+            );
+          }
         },
         err => {
           console.log(err);

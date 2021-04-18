@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Logo } from '../models/imagen/logo';
 import { Local } from '../models/local';
 import { Restaurante } from '../models/restaurante';
 import { Response } from '../util/Response';
@@ -17,10 +18,14 @@ export class RestauranteService {
 
 
 
-  crearRestaurante(restaurante: Restaurante, local: Local, logoRestaurante : File, idUsuario: string) {
+  crearRestaurante(restaurante: Restaurante, idUsuario: String) {
+    return this.httpClient.post<Response<Restaurante>>(this.urlBase+`/${idUsuario}`, restaurante);
+  }
 
+
+  crearLogo(logoRestaurante: File, idRestaurante: string) {
     const formData = new FormData();
     formData.append('logoRestaurante', logoRestaurante);
-    return this.httpClient.post<Response<Restaurante>>(this.urlBase+`/${idUsuario}`, [restaurante, local, formData]);
+    return this.httpClient.post<Response<Logo>>(this.urlBase+`/logo/${idRestaurante}`, formData);
   }
 }

@@ -10,10 +10,10 @@ export class SucursalService {
 
   constructor(private http:HttpClient) { }
 
-  URLSUCURSAL = "http://localhost:9898/app/sucursales/";
+  URLSUCURSAL = "http://localhost:9898/app/sucursales";
 
   crearSucursal(sucursal: Sucursal, idRestaurante: string){
-    return this.http.post<Response<Sucursal>>(this.URLSUCURSAL+idRestaurante,sucursal);
+    return this.http.post<Response<Sucursal>>(this.URLSUCURSAL+`/${idRestaurante}`,sucursal);
   }
 
 }
