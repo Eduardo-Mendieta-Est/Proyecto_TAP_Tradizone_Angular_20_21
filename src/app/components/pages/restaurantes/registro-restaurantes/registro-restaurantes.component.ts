@@ -53,6 +53,7 @@ export class RegistroRestaurantesComponent implements OnInit {
   }
 
 
+ 
   enviarFormulario(): void {
 
     this.restaurante = new Restaurante();
@@ -65,9 +66,10 @@ export class RegistroRestaurantesComponent implements OnInit {
     this.local.celular = this.restauranteForm.get('celular').value;
     this.local.horaInicio = this.restauranteForm.get('horaInicio').value;
     this.local.horaFin = this.restauranteForm.get('horaFin').value;
+    this.local.nombreIdentificador = "";
 
     if(this.imagen != null){
-      this.restauranteService.crearRestaurante(this.restaurante, "").subscribe(
+      this.restauranteService.crearRestaurante(this.restaurante, "607ba06a664d1b6dda76bcaa").subscribe(
         data => {
           this.restaurante = data.objectResponse;
           if(data.codigoHttp == HttpStatus.CREATED){
@@ -85,11 +87,15 @@ export class RegistroRestaurantesComponent implements OnInit {
               }
             );
           }
+
+          console.log(data.descripcion);
         },
         err => {
           console.log(err);
         }
       );
+    }else{
+      console.log("formato de imagen no valido");
     }
 
   }
