@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Local } from 'src/app/models/local';
+import { Restaurante } from 'src/app/models/restaurante';
+import { RestauranteService } from 'src/app/services/restaurante.service';
 
 @Component({
   selector: 'app-registro-restaurantes',
@@ -14,8 +17,10 @@ export class RegistroRestaurantesComponent implements OnInit {
 
   imagen: File;
   imagenMin: File;
+  restaurante: Restaurante;
+  local: Local;
 
-  constructor() {
+  constructor(private restauranteService : RestauranteService) {
     this.restauranteForm = this.crearFormGroup();
    }
 
@@ -26,7 +31,11 @@ export class RegistroRestaurantesComponent implements OnInit {
   crearFormGroup(): FormGroup {
     return new FormGroup({
       nombre: new FormControl('', Validators.required),
+      direccion : new FormControl('', Validators.required),
       telefono: new FormControl('', Validators.required),
+      celular : new FormControl('', Validators.required),
+      horaInicio: new FormControl('', Validators.required),
+      horaFin: new FormControl('', Validators.required),
       slogan: new FormControl('', Validators.required)
     });
   }
@@ -41,13 +50,29 @@ export class RegistroRestaurantesComponent implements OnInit {
 
 
   enviarFormulario(): void {
-    if(this.restauranteForm.valid){
-      console.log(this.restauranteForm.value);
-      this.resetearFormulario();
-    }else{
-      console.log('formulario no valido');
+
+    this.restaurante = new Restaurante();
+    this.restaurante.nombre = this.restauranteForm.get('nombre').value;
+    this.restaurante.slogan = this.restauranteForm.get('slogan').value;
+
+    this.local = new Local();
+    this.local.direccion = this.restauranteForm.get('direccion').value;
+    this.local.telefono = this.restauranteForm.get('telefono').value;
+    this.local.celular = this.restauranteForm.get('celular').value;
+    this.local.horaInicio = this.restauranteForm.get('horaInicio').value;
+    this.local.horaFin = this.restauranteForm.get('horaFin').value;
+
+    if(this.imagen != null){
+      this.restauranteService.crearRestaurante(this.restaurante, this.local, this.imagen, "").subscribe(
+        data => {
+          console.log(data);
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }
-  
+
   }
 
 
@@ -65,5 +90,9 @@ export class RegistroRestaurantesComponent implements OnInit {
   get nombre(){return this.restauranteForm.get('nombre')}
   get telefono(){return this.restauranteForm.get('telefono')}
   get slogan(){return this.restauranteForm.get('slogan')}
+  get direccion(){return this.restauranteForm.get('direccion')}
+  get celular(){return this.restauranteForm.get('celular')}
+  get horaInicio(){return this.restauranteForm.get('horaInicio')}
+  get horaFin(){return this.restauranteForm.get('horaFin')}
 
 }

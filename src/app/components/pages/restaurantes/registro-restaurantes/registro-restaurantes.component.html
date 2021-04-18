@@ -7,9 +7,12 @@
           <input type="text" class="form-control" id="nombre" formControlName="nombre" >
         </div>
     </div>
-    <!-- -------------------- Validación para el nombre: -------------------- -->
-    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" >
-        <p *ngIf="nombre.errors.required" style="margin: 10px; color: rgb(41, 3, 3); "> El nombre es requerido! </p>
+
+    <div class="form-group row">
+      <label for="direccion" class="col-sm-2 col-form-label">Dirección:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="direccion" formControlName="direccion" >
+      </div>
     </div>
 
     <div class="form-group row">
@@ -18,10 +21,27 @@
         <input type="number" class="form-control" id="telefono"  formControlName="telefono" >
       </div>
     </div>
-     <!-- -------------------- Validación para el teléfono: -------------------- -->
-     <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" >
-        <p *ngIf="telefono.errors.required" style="margin: 10px; color: rgb(41, 3, 3); "> El teléfono es requerido! </p>    
-     </div>
+
+    <div class="form-group row">
+      <label for="celular" class="col-sm-2 col-form-label">Celular:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="celular"  formControlName="celular" >
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="horaInicio" class="col-sm-2 col-form-label">Hora apertura:</label>
+      <div class="col-sm-10">
+        <input type="time" class="form-control" id="horaInicio"  formControlName="horaInicio" >
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="horaFin" class="col-sm-2 col-form-label">Hora cierre:</label>
+      <div class="col-sm-10">
+        <input type="time" class="form-control" id="horaFin"  formControlName="horaFin" >
+      </div>
+    </div>
 
     <div class="form-group row">
       <label for="slogan" class="col-sm-2 col-form-label">Slogan:</label>
@@ -29,10 +49,6 @@
         <input type="text" class="form-control" id="slogan" formControlName="slogan" >
       </div>
     </div>
-    <!-- -------------------- Validación para el slogan: -------------------- -->
-    <div *ngIf="slogan.invalid && (slogan.dirty || slogan.touched)" >
-        <p *ngIf="slogan.errors.required" style="margin: 10px; color: rgb(41, 3, 3); "> El slogan es requerido! </p>    
-     </div>
 
     <div class="form-group row">
         <label for="logo" class="col-sm-2 col-form-label">Elige un imagen (logo):</label>
@@ -47,11 +63,7 @@
             <img class="image-thumbnail" style="max-width: 100px;" [src]="imagenMin">
         </div>
     </div>
-    <!-- -------------------- Validación para el logo: -------------------- -->
-    <div *ngIf="!imagen" >
-        <p> El logo es requerido! </p>    
-     </div>
-
+    
     <button type="submit" class="btn btn-primary">Listo</button>
     <button class="btn btn-danger" (click)="resetearFormulario()">Cancelar</button>
 
