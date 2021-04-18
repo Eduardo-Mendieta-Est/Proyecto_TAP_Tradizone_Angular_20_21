@@ -1,0 +1,67 @@
+<div class="container">
+    <header>
+        <h1 style="text-align: center;">Formulario Plato</h1>
+    </header>
+    <body>
+        <div class="container px-4">
+            <form [formGroup]="platoForm">
+                <div class="mb-3">
+                    <label for="formularioPlato" class="form-label"><b>Nombre:</b></label>
+                    <input type="text" class="form-control" id="nombre" formControlName="nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioPlato" class="form-label"><b>Descripción:</b></label>
+                    <input type="text" class="form-control" id="descripcion" formControlName="descripcion">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioPlato" class="form-label"><b>Ingredientes:</b></label>
+                    <input type="text" class="form-control" id="ingredientes" formControlName="ingredientes">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioPlato" class="form-label"><b>Precio:</b></label>
+                    <input type="number" class="form-control" id="precio" formControlName="precio">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioPlato" class="form-label"><b>Categoria:</b></label>
+                    <div class="row gx-5">
+                        <div class="col">                        
+                            <!--Info Categoria-->                    
+                            <select formControlName="categoria"  class="form-select" aria-label="Default select example">
+                                <option [value]="categoria.id" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
+                            </select>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <div class="form-group row">
+                            <label for="logo" class="col-sm-2 col-form-label"><b>Suba una imagen:</b></label>
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" id="logo" accept="image/png, image/jpeg, image/gif" 
+                                    #imagenInputFile (change)="onFileChange($event)">
+                            </div>
+                        </div>
+                        <div *ngIf="imagen" class="mb-2" style="text-align: center;">
+                            <h5 style="font-size: 12px;">Vista Previa:</h5>
+                            <div>
+                                <img class="image-thumbnail" style="max-width: 100px;" [src]="imagenMin">
+                            </div>
+                        </div>
+                            <!-- -------------------- Validación para el logo: -------------------- -->
+                        <div *ngIf="!imagen" >
+                                <p> La imagen es requerida! </p>    
+                        </div>      
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-primary" (click)="guardarPlato()">Listo</button>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-danger" (click)="resetearFormulario()">Cancelar</button>
+                    </div>          
+                </div>
+            </form>
+        </div>
+    </body>
+</div>

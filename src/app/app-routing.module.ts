@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/extras/home/home.component';
+import { FormularioPlatoComponent } from './components/pages/platos/formulario-plato/formulario-plato.component';
 import { FormularioSucursalComponent } from './components/pages/restaurantes/formulario-sucursal/formulario-sucursal.component';
 import { RegistroRestaurantesComponent } from './components/pages/restaurantes/registro-restaurantes/registro-restaurantes.component';
 import { RegistroUsuariosComponent } from './components/pages/usuarios/registro-usuarios/registro-usuarios.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'restaurante-registro', component: RegistroRestaurantesComponent },
   { path: 'usuario-registro', component: RegistroUsuariosComponent},
   { path: 'sucursal-registro', component: FormularioSucursalComponent},
+  { path: 'plato-registro', component: FormularioPlatoComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
