@@ -8,4 +8,5 @@ export class Plato{
     precio: number;
 
     idCategoria: string;
+    idRestaurante: string;
 }

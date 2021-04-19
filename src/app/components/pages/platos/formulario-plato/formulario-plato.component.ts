@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Categoria } from 'src/app/models/categoria';
+import { ImagenPlato } from 'src/app/models/imagen/imagen_plato';
 import { Plato } from 'src/app/models/plato';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { PlatoService } from 'src/app/services/plato.service';
@@ -18,10 +19,10 @@ export class FormularioPlatoComponent implements OnInit {
   imagen: File;
   imagenMin: File;
 
+  imagenPlato: ImagenPlato;
   platoForm: FormGroup;
   plato= new Plato;
 
-  datoPlato: Response<Plato>;
   categorias: Categoria[];
   respuesta: Response<Categoria>;
 
@@ -53,13 +54,25 @@ export class FormularioPlatoComponent implements OnInit {
     this.plato.precio = this.platoForm.get("precio").value;
     this.plato.idCategoria = this.platoForm.get("categoria").value;
 
-    console.log(this.plato)
-    this.platoService.crearPlato(this.plato).subscribe(data=>{
-      this.datoPlato=data;
-      console.log(data)
-    }, err =>{
-      console.log(err)
-    });
+
+    if (this.imagen != null){
+      this.platoService.crearPlato(this.plato,"607ba6d8b513f31184d99408").subscribe(data=>{
+        this.plato=data.objectResponse;
+        console.log(data.descripcion)
+
+        this.platoService.crearImagenPlato(this.imagen, this.plato.id).subscribe(
+          data => {
+            this.imagenPlato = data.objectResponse;
+            console.log(data.descripcion);
+          },err =>{
+            console.log(err)
+          });
+      }, err =>{
+        console.log(err)
+      });
+    }else{
+      console.log("Formato no valido")
+    }
   }
 
   crearFormGroup(): FormGroup{
