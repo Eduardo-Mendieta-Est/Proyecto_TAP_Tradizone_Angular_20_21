@@ -1,1 +1,26 @@
 <p>login works!</p>
+<div class="container">
+    <header>
+        <div style="text-align: center;">
+            <img src="https://res.cloudinary.com/dvtvnjgle/image/upload/v1618199239/logo_tradizone_zmvj3g.gif" alt="" height="200" class="d-inline-block align-text-top">
+        </div>
+    </header>
+    <body>
+        <form [formGroup]="loginForm">
+            <div class="container px-2">
+                <div class="mb-3">
+                    <label for="formularioLogin" class="form-label"><b>Correo:</b></label>
+                    <input type="text" class="form-control" id="correo" formControlName="correo">
+                </div>
+                <div class="mb-3">
+                    <label for="formularioLogin" class="form-label"><b>Contraseña:</b></label>
+                    <input type="password" class="form-control" id="contrasena" formControlName="contrasena">
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                        <div class="mb-3"><button type="button" class="btn btn-outline-primary" >Ingresar</button></div>
+                        <div class="mb-3"><button class="btn btn-outline-succes" >Registrarse</button></div>
+                </div>
+            </div>            
+        </form>
+    </body>
+</div>
