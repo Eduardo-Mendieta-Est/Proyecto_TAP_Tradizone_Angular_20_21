@@ -8,12 +8,7 @@ import { Response } from '../util/Response';
 })
 export class UsuarioService {
 
+  url = "http://localhost:9898/app/usuarios ";
+
   constructor(private http:HttpClient) { }
-
-  URLUSUARIO = "http://localhost:9898/app/usuarios ";
-
-  createUsuario(usuario: Usuario){
-    return this.http.post<Response<Usuario>>(this.URLUSUARIO,usuario); 
-  }
-
 }
