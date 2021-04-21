@@ -1,5 +1,5 @@
 export class GlobalApp{
 
-  public static serverToken: string = "";
-  public static appUserId: string = "";
+  public static serverToken: string = "notToken";
+  public static appUserId: string = "default";
 }

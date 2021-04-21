@@ -10,7 +10,7 @@ import { Response } from '../util/Response';
 })
 export class RestauranteService {
 
-  urlBase = "http://localhost:9898/app/restaurantes";
+  url = "http://localhost:9898/app/restaurantes";
 
 
 
@@ -19,13 +19,17 @@ export class RestauranteService {
 
 
   crearRestaurante(restaurante: Restaurante, idUsuario: String) {
-    return this.httpClient.post<Response<Restaurante>>(this.urlBase+`/${idUsuario}`, restaurante);
+    return this.httpClient.post<Response<Restaurante>>(this.url+`/${idUsuario}`, restaurante);
   }
 
 
   crearLogo(logoRestaurante: File, idRestaurante: string) {
     const formData = new FormData();
     formData.append('logoRestaurante', logoRestaurante);
-    return this.httpClient.post<Response<Logo>>(this.urlBase+`/logo/${idRestaurante}`, formData);
+    return this.httpClient.post<Response<Logo>>(this.url+`/logo/${idRestaurante}`, formData);
+  }
+
+  getRestaurante(idUsuario: string) {
+    return this.httpClient.get<Response<Restaurante>>(this.url+`/${idUsuario}`);
   }
 }

@@ -27,11 +27,12 @@
 
 .menu-principal ul li a:hover{
     text-decoration: underline;
+    transition: .4s;
 }
 
-/* --------------------------- caja de botones de sesión --------------------------- */
+/* --------------------------- caja de sesión --------------------------- */
 
-.menu-principal .btns-sesion{
+.menu-principal .contenedor-sesion{
     display: inline;
     float: right;
     margin-top: 25px;
@@ -82,3 +83,75 @@
 .menu-principal .btn-login a {
     color: #5A8FED;
 }
+
+/* --------------------------- menu despleglable de cuenta  --------------------------- */
+.menu-principal .contenedor-sesion > p{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 14px; 
+    margin-right: 10px;
+}
+
+.menu-principal .contenedor-sesion > div {
+    display: inline-block;
+    position: relative;
+}
+
+
+.menu-principal .contenedor-sesion > div > img{
+    display: inline-block;
+    height: 50px;
+}
+
+.menu-principal .contenedor-sesion > div:hover > ul {
+    display: block;
+}
+
+.menu-principal .contenedor-sesion ul{
+    position: absolute;
+    display: none;
+    list-style: none;
+    padding: 0;
+    right: 1px;
+    top: 50px;
+}
+
+.menu-principal .contenedor-sesion li{
+    display: block;
+    width: 150px;
+    border: #5A8FED solid 2px;
+    margin-top: -2px;
+    padding: 5px;
+    background-color: white;
+}
+
+.menu-principal .contenedor-sesion li:hover{
+    background-color: rgb(243, 241, 241);
+    cursor: pointer;
+}
+
+.menu-principal .contenedor-sesion ul li a{
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+}
+
+.menu-principal .contenedor-sesion ul li button{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: #5A8FED;
+    font-weight: bold;
+}
+
+/* --------------------------- Boton agregar Restaurante --------------------------- */
+
+.menu-principal .btn-restaurante{
+    background-color: rgb(44, 126, 44);
+    width: 210px;
+}
+
+.menu-principal .btn-restaurante a{
+    color: white;
+}
+
+

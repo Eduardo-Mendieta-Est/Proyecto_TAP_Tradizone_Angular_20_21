@@ -1,32 +1,4 @@
-<!-- <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="navbar-brand" href="#">
-              <img src="https://res.cloudinary.com/dvtvnjgle/image/upload/v1618199239/logo_tradizone_zmvj3g.gif" alt="" height="50" class="d-inline-block align-text-top">
-            </a>
-            <a class="nav-link" href="#">Historia</a>
-            <a class="nav-link" href="#">Restaurantes</a>
-            <a class="nav-link" href="#">A cerca de</a>
-          </div>        
-        </div>
-        <div class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Otros..</a>
-            <ul class="dropdown-menu">
-              <li><a class="nav-link" href="plato-registro">Agregar Plato</a></li>
-              <li><a class="nav-link" href="sucursal-registro">Registrar Sucursal</a></li>
-              <li><a class="nav-link" href="restaurante-registro">Registrar Restaurante</a></li>
-            </ul>
-          </li>            
-          <a class="nav-link" href="usuario-registro">Registrarse</a>
-          <a class="nav-link" href="home">Iniciar Sesión</a>
-        </div>
-      </div>
-    </nav>
-  </div> -->
-  <div class="menu-principal">
+ <div class="menu-principal">
     <div class="logo">
       <a href="home"><img src="../../../../assets/img/logo_tradizone.gif"></a>
     </div>
@@ -36,8 +8,25 @@
       <li><a href="#">Menu Recomendado</a></li>
       <li><a href="#">A cerca de</a></li>
     </ul>
-    <div class="btns-sesion">
+
+    <!-- ------------------ Aparacera cuando el usuario no haya iniciado sesion ------------------ -->
+    <div class="contenedor-sesion" *ngIf = "restaurante == null && usuario == null">
       <div class="boton btn-registrarse" ><a href="usuario-registro">Registrarse</a> </div>
-      <div class="boton btn-login" ><a href="home">Iniciar Sesión</a></div>
+      <div class="boton btn-login" ><a href="login">Iniciar Sesión</a></div>
     </div>
-  </div>
+
+
+    <!-- ------------------ Aparacera cuando el usuario haya iniciado sesion y tenga al menos un restaurante ------------------ -->
+    <div class="contenedor-sesion" *ngIf = "usuario != null">
+      <p>{{usuario.nombre}}</p>
+      <div>
+        <img src="{{avatar.url}}" >
+        <ul *ngIf = "usuario != null && restaurante != null">
+          <li><a href=""> <i class="fas fa-file-invoice"></i> Tablero</a></li>
+          <li><a href=""> <i class="far fa-sun"></i> Configuración de la cuenta </a></li>
+          <li><button><i class="fas fa-sign-out-alt"></i> Cerrar Sesión </button></li>
+        </ul>
+      </div>
+    </div>
+
+</div>
