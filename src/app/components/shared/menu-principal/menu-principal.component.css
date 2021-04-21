@@ -1,0 +1,84 @@
+/* --------------------------- Menu principal:  --------------------------- */
+
+.menu-principal{
+    height: 100%;
+    margin: 5px 2%; 
+    margin-top: 10px;
+}
+
+.menu-principal ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-left: 30px;
+}
+
+.menu-principal ul li{
+    display: inline-block;
+}
+
+.menu-principal ul li a{
+    color: #5A8FED;
+    font-size: 16px;
+    font-weight:  bold;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.menu-principal ul li a:hover{
+    text-decoration: underline;
+}
+
+/* --------------------------- caja de botones de sesión --------------------------- */
+
+.menu-principal .btns-sesion{
+    display: inline;
+    float: right;
+    margin-top: 25px;
+}
+
+/* --------------------------- Logo Tradizone --------------------------- */
+.menu-principal .logo{
+    display: inline-block;
+}
+
+.menu-principal .logo a img{
+    height: 100px;
+}
+
+/* --------------------------- General para todos los botones --------------------------- */
+.menu-principal .boton{
+    display: inline-block;
+    height: 40px;
+    width: 180px;
+    border-radius: 40px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+}
+
+.menu-principal .boton a{
+    font-size: 17px;
+    text-decoration: none;
+}
+
+/* --------------------------- Boton de Registrarse --------------------------- */
+
+.menu-principal .btn-registrarse{
+    background-color: #5A8FED;;
+}
+
+.menu-principal .btn-registrarse a{
+    color: white;
+}
+
+/* --------------------------- Boton de Login  --------------------------- */
+
+.menu-principal .btn-login{
+    border: #5A8FED 2px solid;
+    margin-left: 10px;
+}
+
+.menu-principal .btn-login a {
+    color: #5A8FED;
+}
